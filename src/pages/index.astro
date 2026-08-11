@@ -1,0 +1,105 @@
+---
+const pageTitle = 'LED Dynamo · Leddy — Connected display control';
+const description = 'Publish from web, API, or CLI; stream commands and telemetry; render deterministic messages on microcontrollers and Raspberry Pi.';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href="https://led-dynamo.github.io/" />
+    <meta name="theme-color" content="#11100d" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://led-dynamo.github.io/" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header>
+      <a class="brand" href="/" aria-label="LED Dynamo Leddy home"><span class="logo-grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><span>LED DYNAMO <b>· LEDDY</b></span></a>
+      <nav aria-label="Primary navigation"><a href="#system">System</a><a href="#hardware">Hardware</a><a href="#repositories">Code</a><a class="outline" href="https://github.com/led-dynamo">GitHub</a></nav>
+    </header>
+
+    <main id="main">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="serial">DISPLAY SYSTEM / LDY-01</p>
+          <h1>From message<br />to matrix,<br /><em>one connected system.</em></h1>
+          <p class="lede">Publish from web, API, or CLI. Stream commands and telemetry over WebSockets. Render deterministic scrolling text on Arduino, ESP32-S3, STM32F4, or Raspberry Pi.</p>
+          <div class="actions"><a class="button lit" href="https://github.com/led-dynamo/leddy-monorepo">Enter the monorepo</a><a class="button dark" href="#system">Trace the signal</a></div>
+        </div>
+        <div class="device-stage" aria-label="Illustration of a connected LED matrix receiving a message">
+          <div class="device">
+            <div class="screw s1"></div><div class="screw s2"></div><div class="screw s3"></div><div class="screw s4"></div>
+            <div class="matrix"><span>HELLO ↗</span></div>
+            <div class="device-meta"><span>192 × 8</span><span class="online"><i></i> ONLINE</span><span>42 FPS</span></div>
+          </div>
+          <div class="signal-card publish"><span>01</span><b>PUBLISH</b><small>web · API · CLI</small></div>
+          <div class="signal-card socket"><span>02</span><b>COMMAND</b><small>WebSocket</small></div>
+          <div class="signal-card render"><span>03</span><b>RENDER</b><small>framebuffer</small></div>
+        </div>
+      </section>
+
+      <section class="flow" aria-label="Leddy command flow">
+        <div><span>INPUT</span><b>Message + display policy</b></div><i>→</i><div><span>CONTROL PLANE</span><b>Desired state + telemetry</b></div><i>→</i><div><span>DEVICE</span><b>Deterministic pixels</b></div>
+      </section>
+
+      <section class="system section" id="system">
+        <div class="section-heading"><p class="tag">THE SYSTEM</p><h2>Every layer has a contract.</h2><p>Compose, deliver, and render messages without burying device behavior inside the control plane.</p></div>
+        <div class="layer-stack">
+          <article><span>01</span><div><h3>Compose & publish</h3><p>Preview and send through the Rust web surface, JSON API, command-line client, or a generated SDK.</p></div><b>HTTP</b></article>
+          <article><span>02</span><div><h3>Command & observe</h3><p>The WebSocket command plane carries desired display state and receives device telemetry.</p></div><b>WS</b></article>
+          <article><span>03</span><div><h3>Render predictably</h3><p>A shared Rust framebuffer, 5×7 font, layout engine, and serpentine addressing turn state into physical pixels.</p></div><b>RGB</b></article>
+          <article><span>04</span><div><h3>Recover current state</h3><p>Reconnecting devices receive the latest desired state without duplicate replay.</p></div><b>REV</b></article>
+        </div>
+      </section>
+
+      <section class="hardware section" id="hardware">
+        <div class="hardware-copy">
+          <p class="tag">DEVICE RANGE</p>
+          <h2>Small ticker.<br />Long wall.<br />Same message model.</h2>
+          <p>Board dimensions are configuration, not a product fork. The software targets compact five-row tickers through installations hundreds of pixels wide; physical readiness remains tied to repository-specific smoke-test evidence.</p>
+          <div class="scale"><span>100 × 5</span><i></i><b>recommended working range</b><i></i><span>300 × 20</span></div>
+        </div>
+        <div class="controller-board">
+          <div class="board-head"><span>CONTROLLERS / TRANSPORTS</span><span>SOFTWARE TARGETS</span></div>
+          <ul>
+            <li><b>Arduino / ESP32</b><span>Wi-Fi · serial adapters</span><i>software</i></li>
+            <li><b>ESP32-S3</b><span>connected matrix firmware</span><i>software</i></li>
+            <li><b>STM32F4</b><span>embedded display target</span><i>software</i></li>
+            <li><b>Raspberry Pi</b><span>Rust agent · hardware adapters</span><i>software</i></li>
+            <li><b>Virtual device</b><span>software-only E2E certification</span><i>test</i></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="contracts section">
+        <div><p class="tag">PORTABLE CONTRACTS</p><h2>OpenAPI, AsyncAPI, and JSON Schema keep the fleet legible.</h2></div>
+        <p>Official clients span native, browser, edge, BEAM, JVM, mobile, and scripting runtimes. The same typed display and telemetry model reaches each surface.</p>
+        <div class="languages" aria-label="Client SDK language families"><span>C / C++ / Zig</span><span>Rust / WASM</span><span>TypeScript</span><span>Go</span><span>Dart / Swift</span><span>Java / Kotlin</span><span>Erlang / Elixir / Gleam</span><span>Python / Ruby / PHP</span></div>
+      </section>
+
+      <section class="repositories section" id="repositories">
+        <div class="section-heading"><p class="tag">REPOSITORY MAP</p><h2>Follow one message through the stack.</h2><p>Each repository owns a bounded layer. The monorepo coordinates versions and the end-to-end project certifies the whole route.</p></div>
+        <div class="repo-grid">
+          <a href="https://github.com/led-dynamo/leddy-web-server.rs"><b>WEB</b><span>Compose & preview</span><i>↗</i></a>
+          <a href="https://github.com/led-dynamo/leddy-api-server.rs"><b>API</b><span>Commands & telemetry</span><i>↗</i></a>
+          <a href="https://github.com/led-dynamo/leddy-lib"><b>LIB</b><span>Framebuffer & layout</span><i>↗</i></a>
+          <a href="https://github.com/led-dynamo/leddy-arduino"><b>MCU</b><span>Arduino / ESP firmware</span><i>↗</i></a>
+          <a href="https://github.com/led-dynamo/leddy-rasp-pi"><b>PI</b><span>Raspberry Pi agent</span><i>↗</i></a>
+          <a href="https://github.com/led-dynamo/leddy-e2e"><b>E2E</b><span>Protocol & device tests</span><i>↗</i></a>
+        </div>
+      </section>
+    </main>
+    <footer><a class="brand" href="/"><span class="logo-grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span><span>LED DYNAMO <b>· LEDDY</b></span></a><p>Message in. Light out. Every layer observable.</p><a href="https://github.com/led-dynamo">GitHub ↗</a></footer>
+  </body>
+</html>
+
+<style is:global>
+  :root{--black:#11100d;--ink:#201e18;--cream:#f3eedf;--paper:#e9e2d1;--line:#b8af99;--amber:#ffbd34;--cyan:#67e0d0;--red:#e4573f;--dim:#6e685b;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--cream);font-synthesis:none}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream)}a{color:inherit}.skip-link{position:fixed;top:-4rem;left:1rem;background:var(--amber);padding:.8rem;z-index:100}.skip-link:focus{top:1rem}header,main,footer{width:min(1200px,calc(100% - 42px));margin-inline:auto}header{height:86px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;font-size:.78rem;font-weight:950;letter-spacing:.1em}.brand b{color:#9c5200}.logo-grid{width:33px;display:grid;grid-template-columns:repeat(3,7px);gap:4px}.logo-grid i{width:7px;height:7px;background:var(--ink);border-radius:1px}.logo-grid i:nth-child(2),.logo-grid i:nth-child(4),.logo-grid i:nth-child(6){background:var(--amber);box-shadow:0 0 8px rgba(255,189,52,.5)}nav{display:flex;gap:1.5rem;align-items:center;font-size:.76rem;font-weight:850}nav a{text-decoration:none}.outline{border:1px solid var(--ink);padding:.65rem .85rem}.hero{min-height:690px;display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center;padding:70px 0 90px}.serial,.tag{font:800 .67rem ui-monospace,SFMono-Regular,monospace;letter-spacing:.16em}.serial{color:#955500}.tag{color:#8a5010}h1,h2,h3,p{margin-top:0}h1{font-family:"Arial Narrow",Inter,sans-serif;font-size:clamp(4rem,7.5vw,7.5rem);line-height:.82;letter-spacing:-.075em;text-transform:uppercase;margin:1.3rem 0 2rem}h1 em{font-style:normal;color:#a85500}h2{font-family:"Arial Narrow",Inter,sans-serif;font-size:clamp(2.8rem,5.2vw,5.3rem);line-height:.9;letter-spacing:-.065em;text-transform:uppercase}.lede{font-size:1.12rem;line-height:1.7;color:var(--dim);max-width:630px}.actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:2rem}.button{padding:.85rem 1rem;border:1px solid var(--ink);font-size:.78rem;text-decoration:none;font-weight:900}.button.lit{background:var(--amber)}.button.dark{background:var(--black);color:var(--cream)}.device-stage{position:relative;min-height:530px;background:var(--paper);border:1px solid var(--line);display:grid;place-items:center}.device{position:relative;width:84%;background:#22211d;padding:38px 28px 20px;border-radius:6px;box-shadow:8px 9px 0 #97907f}.screw{position:absolute;width:8px;height:8px;border:1px solid #777267;border-radius:50%}.s1{left:12px;top:12px}.s2{right:12px;top:12px}.s3{left:12px;bottom:12px}.s4{right:12px;bottom:12px}.matrix{height:160px;border:2px solid #080907;background-color:#080907;background-image:radial-gradient(circle,#393a32 1.6px,transparent 1.8px);background-size:11px 11px;display:flex;align-items:center;justify-content:center;overflow:hidden}.matrix span{font:900 clamp(2.2rem,5vw,4.2rem) ui-monospace,monospace;white-space:nowrap;color:var(--amber);text-shadow:0 0 9px #ff8a00,0 0 20px rgba(255,189,52,.65);letter-spacing:.06em}.device-meta{display:flex;justify-content:space-between;color:#aaa498;font:700 .6rem ui-monospace,monospace;padding-top:14px}.online{color:var(--cyan)}.online i{display:inline-block;width:6px;height:6px;background:var(--cyan);border-radius:50%;box-shadow:0 0 7px var(--cyan);margin-right:5px}.signal-card{position:absolute;background:var(--cream);border:1px solid var(--ink);padding:11px 13px;display:grid;grid-template-columns:auto 1fr;column-gap:9px;box-shadow:4px 4px 0 var(--ink)}.signal-card span{grid-row:1/3;font:900 .65rem ui-monospace,monospace;color:#a85500}.signal-card b{font:900 .63rem ui-monospace,monospace}.signal-card small{color:var(--dim);font-size:.63rem}.signal-card.publish{left:-15px;top:42px}.signal-card.socket{right:-18px;top:70px}.signal-card.render{right:35px;bottom:28px}.flow{width:100%;background:var(--black);color:var(--cream);padding:28px 35px;display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:25px;align-items:center}.flow div{display:flex;flex-direction:column;gap:.4rem}.flow span{font:700 .58rem ui-monospace,monospace;color:var(--amber);letter-spacing:.13em}.flow b{font-size:.83rem}.flow>i{font-style:normal;color:var(--cyan);font-size:1.5rem}.section{padding:110px 0;border-bottom:1px solid var(--line)}.section-heading{display:grid;grid-template-columns:.35fr 1fr .65fr;gap:2.5rem;align-items:start;margin-bottom:55px}.section-heading h2{margin:0}.section-heading>p:last-child{color:var(--dim);line-height:1.7}.layer-stack{border-top:1px solid var(--ink)}.layer-stack article{display:grid;grid-template-columns:70px 1fr auto;gap:25px;align-items:center;padding:24px 8px;border-bottom:1px solid var(--line)}.layer-stack article>span{font:800 .68rem ui-monospace,monospace;color:#9a5a10}.layer-stack h3{font-size:1.05rem;margin:0 0 .4rem}.layer-stack p{margin:0;color:var(--dim);font-size:.84rem;line-height:1.55}.layer-stack article>b{font:900 .67rem ui-monospace,monospace;border:1px solid;padding:.5rem;min-width:47px;text-align:center}.hardware{display:grid;grid-template-columns:1fr .95fr;gap:7vw;align-items:center}.hardware-copy>p:not(.tag){color:var(--dim);line-height:1.7}.scale{margin-top:2.2rem;display:grid;grid-template-columns:auto 1fr auto 1fr auto;align-items:center;gap:9px;font:700 .6rem ui-monospace,monospace}.scale i{height:1px;background:var(--line)}.scale b{font-weight:600;color:var(--dim)}.controller-board{background:var(--paper);border:1px solid var(--line)}.board-head{display:flex;justify-content:space-between;background:var(--black);color:var(--cream);padding:14px 16px;font:700 .62rem ui-monospace,monospace}.board-head span:last-child{color:var(--cyan)}.controller-board ul{list-style:none;padding:0;margin:0}.controller-board li{display:grid;grid-template-columns:1fr 1.2fr auto;gap:15px;padding:18px 16px;border-bottom:1px solid var(--line);align-items:center}.controller-board li:last-child{border:0}.controller-board li b{font-size:.8rem}.controller-board li span{font-size:.72rem;color:var(--dim)}.controller-board li i{font:800 .58rem ui-monospace,monospace;color:#347c70;text-transform:uppercase}.contracts{display:grid;grid-template-columns:1fr .65fr;gap:6vw;align-items:start}.contracts>p{line-height:1.75;color:var(--dim)}.languages{grid-column:1/-1;display:flex;flex-wrap:wrap;border-top:1px solid var(--line);border-left:1px solid var(--line)}.languages span{padding:15px 17px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);font:800 .67rem ui-monospace,monospace;flex:1 0 180px;background:var(--paper)}.repo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.repo-grid a{min-height:145px;background:var(--paper);border:1px solid var(--line);padding:20px;display:grid;grid-template-columns:1fr auto;align-content:space-between;text-decoration:none}.repo-grid a>b{font:900 .65rem ui-monospace,monospace;color:#9a5a10}.repo-grid a>span{grid-column:1/-1;font-size:.82rem;color:var(--dim);align-self:end}.repo-grid a>i{font-style:normal}.repo-grid a:hover{background:var(--amber);border-color:var(--ink)}footer{padding:50px 0 65px;display:grid;grid-template-columns:1fr 1fr auto;gap:2rem;align-items:center;font-size:.76rem;color:var(--dim)}footer p{margin:0}footer>a:last-child{font-weight:900;color:var(--ink)}
+  :focus-visible{outline:3px solid #b75f00;outline-offset:3px}@media(max-width:900px){.hero,.hardware{grid-template-columns:1fr}.device-stage{max-width:700px}.section-heading,.contracts{grid-template-columns:1fr}.repo-grid{grid-template-columns:repeat(2,1fr)}footer{grid-template-columns:1fr}}@media(max-width:620px){header{height:auto;padding:18px 0;align-items:flex-start}nav a:not(.outline){display:none}.hero{padding:55px 0}h1{font-size:3.65rem}.device-stage{min-height:410px}.device{width:91%;padding:30px 16px 16px}.matrix{height:125px}.signal-card.publish{left:-5px}.signal-card.socket{right:-5px}.flow{grid-template-columns:1fr;gap:14px}.flow>i{transform:rotate(90deg)}.section{padding:78px 0}.section-heading{gap:.8rem}.layer-stack article{grid-template-columns:40px 1fr}.layer-stack article>b{display:none}.controller-board li{grid-template-columns:1fr auto}.controller-board li span{grid-column:1/-1;grid-row:2}.repo-grid{grid-template-columns:1fr}.scale{grid-template-columns:auto 1fr auto}.scale b,.scale i:nth-of-type(2){display:none}header,main,footer{width:min(100% - 26px,1200px)}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
